@@ -1,1 +1,23 @@
-<p>characters works!</p>
+<div class="container">
+  <h2>Lista de Personajes</h2>
+  <div class="row">
+    <div class="card col-md-4" *ngFor="let character of characters">
+      <img [src]="character.image" [alt]="character.name" class="character-img">
+      <div class="card-body">
+        <h3>{{ character.name }}</h3>
+        <p><strong>ID:</strong> {{ character.id }}</p>
+        <p><strong>Especie:</strong> {{ character.species }}</p>
+        <p><strong>Género:</strong> {{ character.gender }}</p>
+        <p><strong>Estado:</strong>
+          <span [ngClass]="{
+            'alive': character.status === 'Alive',
+            'dead': character.status === 'Dead',
+            'unknown': character.status === 'unknown'
+          }">
+            {{ character.status }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

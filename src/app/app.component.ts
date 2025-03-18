@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'dwec_angular19_m_rym_nombre';
+  title = 'dwec_angular19_m_rym_Estacio_Alvaro';
 }
