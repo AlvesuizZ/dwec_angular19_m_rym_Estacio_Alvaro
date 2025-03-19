@@ -6,7 +6,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { CardComponent } from './components/card/card.component';
+
 
 
 
@@ -18,13 +18,13 @@ import { CardComponent } from './components/card/card.component';
     MenuComponent,
     BreadcrumbComponent,
     FooterComponent,
-    CardComponent,
+
 
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
-  exports: [LayoutComponent, CardComponent]
+  exports: [LayoutComponent]
 })
 export class CoreModule { }
