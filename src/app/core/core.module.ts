@@ -6,6 +6,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { CardComponent } from './components/card/card.component';
+
+
 
 
 @NgModule({
@@ -14,12 +17,14 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     MenuComponent,
     BreadcrumbComponent,
-    FooterComponent
+    FooterComponent,
+    CardComponent,
+
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
-  exports: [LayoutComponent]
+  exports: [LayoutComponent, CardComponent]
 })
 export class CoreModule { }

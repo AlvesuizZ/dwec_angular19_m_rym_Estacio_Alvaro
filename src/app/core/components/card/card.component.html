@@ -1,0 +1,12 @@
+<div class="card">
+  <img *ngIf="image" [src]="image" [alt]="title">
+  <h3>{{ title }}</h3>
+  <ul>
+    <li *ngFor="let item of details">
+      <strong>{{ item.label }}:</strong> {{ item.value }}
+    </li>
+  </ul>
+  <div class="image-container">
+    <img *ngFor="let img of images" [src]="img" alt="Character" width="50" height="50">
+  </div>
+</div>

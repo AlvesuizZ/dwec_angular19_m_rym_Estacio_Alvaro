@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit} from '@angular/core';
 import { EpisodesService } from '../../services/episodes.service';
 import { Episode } from '../../interfaces/episode.interface';
 
@@ -9,9 +9,10 @@ import { Episode } from '../../interfaces/episode.interface';
   styleUrl: './episodes.component.css'
 })
 export class EpisodesComponent implements OnInit {
-  episodes: Episode[] = [];
 
-  constructor(private episodesService: EpisodesService) {}
+  episodes:Episode[] = [];
+
+  episodesService=inject(EpisodesService)
 
   ngOnInit(): void {
     this.loadRandomEpisodes();
@@ -28,5 +29,10 @@ export class EpisodesComponent implements OnInit {
     return `https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`;
   }
 
-  
+  getCharacterImages(episode: any): string[] {
+    return episode.characters.slice(0, 6).map((characterUrl: string) => this.getCharacterImage(characterUrl));
+  }
+
+
+
 }

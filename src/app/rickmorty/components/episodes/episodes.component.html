@@ -1,12 +1,19 @@
-<div class="episode-list">
-  <div class="card" *ngFor="let episode of episodes">
-    <div class="card-body">
-      <h3>{{ episode.name }}</h3>
-      <p><strong>ID:</strong> {{ episode.id }}</p>
-      <p><strong>Episodio:</strong> {{ episode.episode }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let episode of episodes">
+      <app-card
+        [title]="episode.name"
+        [image]="undefined"
+        [details]="[
+          { label: 'ID', value: episode.id },
+          { label: 'Número', value: episode.episode }
+        ]"
+        [images]="getCharacterImages(episode)">
+      >
+      </app-card>
 
-      <h4>Personajes:</h4>
-      <div class="characters">
+      <!-- Lista de personajes -->
+      <!-- <div class="character-images">
         <img
           *ngFor="let characterUrl of episode.characters.slice(0, 6)"
           [src]="getCharacterImage(characterUrl)"
@@ -14,7 +21,7 @@
           height="50"
           alt="Character"
         />
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

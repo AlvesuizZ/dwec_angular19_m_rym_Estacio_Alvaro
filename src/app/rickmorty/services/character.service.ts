@@ -17,7 +17,7 @@ export class CharacterService {
   getRandomCharacters(): Observable<Character[]> {
     return this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
       map(response => this.getRandomElements(response.results, 6))
-    );
+    ); 
   }
 
   private getRandomElements(array: Character[], count: number): Character[] {
