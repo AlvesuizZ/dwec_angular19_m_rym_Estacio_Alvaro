@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './core/components/layout/layout.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
-  { path: 'rickmorty', loadChildren: () => import('./rickmorty/rickmorty.module').then(m => m.RickmortyModule) },
+  { path: 'rickmorty', loadChildren: () => import('./rickmorty/rickmorty.module').then(m => m.RickmortyModule), canActivate: [AuthGuard]},
   { path: '**', redirectTo: '404' }
 ];
 
