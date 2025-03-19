@@ -15,6 +15,10 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/rickmorty/episodes">Episodios</a>
           </li>
+          <li class="nav-item">
+            <a *ngIf="!authService.isAuthenticated()" routerLink="/login" class="nav-link">Login</a>
+            <a *ngIf="authService.isAuthenticated()" (click)="logout()" class="nav-link">Logout</a>
+          </li>
         </ul>
       </div>
     </div>

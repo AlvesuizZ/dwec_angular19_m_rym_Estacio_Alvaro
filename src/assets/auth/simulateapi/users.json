@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "username": "rick",
+        "password": "$2b$12$rqjNftx0sCKYR7dkRy7GU.yEyv5VcmIIuEmOaEiCVdj11NGBnI/0y",
+        "role": "user",
+        "email": "rick@rym.com"
+    },
+    {
+        "id": 2,
+        "username": "morty",
+        "password": "$2b$12$PV68foCmhOAEAkNQA0ARAeSOmYmgDC.XR54DVzGs2WqAk.n9.GTSq",
+        "role": "user",
+        "email": "morty@rym.com"
+    }
+]
