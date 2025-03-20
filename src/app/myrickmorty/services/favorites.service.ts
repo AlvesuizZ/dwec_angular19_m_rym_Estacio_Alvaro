@@ -8,42 +8,44 @@ export class FavoritesService {
 
   constructor() {}
 
-  // Obtener favoritos de un usuario específico
+
   getFavorites(userId: number): any[] {
-    const favorites = JSON.parse(localStorage.getItem(this.storageKey) || '{}');
-    return favorites[userId] || []; // Devuelve los favoritos del usuario o un array vacío si no existen
+    const favorites = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
+    return favorites.filter((fav: any) => fav.userId === userId); 
   }
 
 
   addFavorite(userId: number, episode: any, rating: number, comment: string): boolean {
+    console.log('Guardando favorito para el usuario:', userId); 
     if (!episode || !rating || !comment) return false;
 
-    const favorites = JSON.parse(localStorage.getItem(this.storageKey) || '{}');
+    const favorites = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
 
-    if (!favorites[userId]) {
-      favorites[userId] = []; // Inicializa el array de favoritos si no existe
-    }
+    const alreadyExists = favorites.some(
+      (fav: any) => fav.userId === userId && fav.id === episode.id
+    );
+    if (alreadyExists) return false; 
 
-    const alreadyExists = favorites[userId].some((fav: any) => fav.id === episode.id);
-    if (alreadyExists) return false; // Evita duplicados
-
-    favorites[userId].push({ ...episode, rating, comment }); // Añade el nuevo favorito
+    favorites.push({ userId, ...episode, rating, comment }); 
     localStorage.setItem(this.storageKey, JSON.stringify(favorites));
 
+    console.log('Favorito añadido:', { userId, ...episode, rating, comment });
     return true;
   }
 
-  // Eliminar un favorito de un usuario específico
-  removeFavorite(userId: number, episodeId: number): void {
-    const favorites = JSON.parse(localStorage.getItem(this.storageKey) || '{}');
 
-    if (favorites[userId]) {
-      favorites[userId] = favorites[userId].filter((fav: any) => fav.id !== episodeId); // Filtra el favorito a eliminar
-      localStorage.setItem(this.storageKey, JSON.stringify(favorites));
-    }
+  removeFavorite(userId: number, episodeId: number): void {
+    const favorites = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
+
+    const updatedFavorites = favorites.filter(
+      (fav: any) => !(fav.userId === userId && fav.id === episodeId)
+    ); // Filtra para eliminar el favorito
+    localStorage.setItem(this.storageKey, JSON.stringify(updatedFavorites));
+
+    console.log('Favorito eliminado:', { userId, episodeId }); 
   }
 
-  // Verificar si un episodio es favorito para un usuario específico
+
   isFavorite(userId: number, episodeId: number): boolean {
     const favorites = this.getFavorites(userId);
     return favorites.some((fav) => fav.id === episodeId);
