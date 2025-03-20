@@ -45,7 +45,6 @@ export class FavoritesService {
     console.log('Favorito eliminado:', { userId, episodeId }); 
   } 
 
-
   isFavorite(userId: number, episodeId: number): boolean {
     const favorites = this.getFavorites(userId) || [];
   
@@ -54,7 +53,7 @@ export class FavoritesService {
   
     return favorites.some(fav => {
       console.log('Comparando con:', fav);
-      return fav.userId.toString() === userId.toString() && fav.episode.id === episodeId;
+      return fav.userId === userId && fav.id === episodeId; // Compara fav.id con episodeId
     });
   }
 }
