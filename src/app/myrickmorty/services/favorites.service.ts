@@ -43,11 +43,18 @@ export class FavoritesService {
     localStorage.setItem(this.storageKey, JSON.stringify(updatedFavorites));
 
     console.log('Favorito eliminado:', { userId, episodeId }); 
-  }
+  } 
 
 
   isFavorite(userId: number, episodeId: number): boolean {
-    const favorites = this.getFavorites(userId);
-    return favorites.some((fav) => fav.id === episodeId);
+    const favorites = this.getFavorites(userId) || [];
+  
+    console.log('Lista de favoritos en isFavorite:', favorites);
+    console.log('Buscando episodio:', episodeId, 'para el usuario:', userId);
+  
+    return favorites.some(fav => {
+      console.log('Comparando con:', fav);
+      return fav.userId.toString() === userId.toString() && fav.episode.id === episodeId;
+    });
   }
 }
