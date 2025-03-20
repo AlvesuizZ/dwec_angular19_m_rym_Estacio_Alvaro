@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Mis Favoritos</h2>
+  <div *ngIf="favorites.length === 0">No hay episodios guardados.</div>
+  <div class="row">
+    <div *ngFor="let episode of favorites" class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ episode.name }}</h5>
+          <p class="card-text"><strong>Fecha de emisión:</strong> {{ episode.air_date }}</p>
+          <p class="card-text"><strong>Episodio:</strong> {{ episode.episode }}</p>
+          <p><strong>Valoración:</strong> {{ episode.rating }}/5</p>
+          <p><strong>Observación:</strong> {{ episode.comment }}</p>
+          <button class="btn btn-danger" (click)="removeFavorite(episode.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './core/components/layout/layout.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './pages/components/login/login.component';
+import { FavoritesComponent } from './myrickmorty/components/favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
   { path: 'rickmorty', loadChildren: () => import('./rickmorty/rickmorty.module').then(m => m.RickmortyModule), canActivate: [AuthGuard]},
-  { path: 'login', component: LoginComponent }, 
+  { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '404' }
 ];
 

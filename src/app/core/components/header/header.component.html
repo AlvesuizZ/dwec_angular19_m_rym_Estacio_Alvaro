@@ -15,6 +15,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/rickmorty/episodes">Episodios</a>
           </li>
+          <li *ngIf="authService.isAuthenticated()"><a routerLink="/favorites" class="nav-link">Favoritos</a></li>
           <li class="nav-item">
             <a *ngIf="!authService.isAuthenticated()" routerLink="/login" class="nav-link">Login</a>
             <a *ngIf="authService.isAuthenticated()" (click)="logout()" class="nav-link">Logout</a>
@@ -23,4 +24,3 @@
       </div>
     </div>
   </nav>
-  

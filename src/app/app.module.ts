@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthGuard } from './auth/auth.guard';
+import { MyrickmortyModule } from './myrickmorty/myrickmorty.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AuthGuard } from './auth/auth.guard';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    MyrickmortyModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

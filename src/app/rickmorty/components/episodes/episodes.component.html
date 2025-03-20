@@ -11,17 +11,9 @@
         [images]="getCharacterImages(episode)">
       >
       </app-card>
-
-      <!-- Lista de personajes -->
-      <!-- <div class="character-images">
-        <img
-          *ngFor="let characterUrl of episode.characters.slice(0, 6)"
-          [src]="getCharacterImage(characterUrl)"
-          width="50"
-          height="50"
-          alt="Character"
-        />
-      </div> -->
+      <button class="btn btn-primary" (click)="toggleFavorite(episode)">
+        {{ favoritesService.isFavorite(userId, episode.id) ? 'Eliminar de Favoritos' : 'Guardar en Favoritos' }}
+      </button>
     </div>
   </div>
 </div>
